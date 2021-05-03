@@ -1,0 +1,37 @@
+{
+  "name": "reactnd-project-would-you-rather-starter",
+  "version": "1.0.0",
+  "description": "Udacity react redux project",
+  "main": "index.js",
+  "dependencies": {
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-icons": "^4.2.0",
+    "react-redux": "^7.2.3",
+    "react-redux-loading": "^4.6.1",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "1.1.1",
+    "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/victorex27/reactnd-project-would-you-rather-starter.git"
+  },
+  "keywords": [
+    "react",
+    "redux"
+  ],
+  "author": "Obikobe Amaobi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/victorex27/reactnd-project-would-you-rather-starter/issues"
+  },
+  "homepage": "https://github.com/victorex27/reactnd-project-would-you-rather-starter#readme"
+}
