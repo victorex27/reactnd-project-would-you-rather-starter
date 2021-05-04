@@ -7,12 +7,11 @@ import App from './components/App';
 import reducers from './reducers';
 import middleware from './middleware';
 
-// const store = createStore(reducers, middleware);
+const store = createStore(reducers, middleware);
 
 ReactDOM.render(
-  // <Provider store={store}>
+  <Provider store={store}>
     <App />
-  // </Provider>
-  ,
+  </Provider>,
   document.getElementById('root')
 );
