@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import UnAnsweredQuestions from './UnAnsweredQuestions';
 import AnsweredQuestions from './AnsweredQuestions';
-import Header from './Header';
 
 
 class Home extends Component {
@@ -34,10 +33,9 @@ class Home extends Component {
   componentDidMount() {}
   render() {
     const { isShowingUnansweredQuestions } = this.state;
-    console.log({ isShowingUnansweredQuestions });
     return (
       <div>
-        <Header />
+        
         <div>
           <div>
             <button onClick={this.showUnansweredQuestions}>unanswered</button>

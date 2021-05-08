@@ -17,7 +17,6 @@ class Login extends Component {
   onSelectChange = (ev) => {
     ev.preventDefault();
     ev.persist();
-    console.log({ ev: ev });
     this.setState(() => ({ value: ev.target.value }));
   };
 
@@ -31,7 +30,10 @@ class Login extends Component {
 
   componentDidMount() {
     this.props.dispatch(handleInitialData());
+    console.log(this.props.location);
   }
+
+  componentWill
   render() {
     const { users } = this.props;
     const { value } = this.state;

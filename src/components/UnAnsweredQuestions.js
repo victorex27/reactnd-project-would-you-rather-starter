@@ -5,8 +5,8 @@ import { handleRetrieveAllQuestions } from '../actions/questions';
 
 class UnAnsweredQuestions extends Component {
   componentDidMount() {
-    const { dispatch } = this.props;
-    dispatch(handleRetrieveAllQuestions());
+    // const { dispatch } = this.props;
+    // dispatch(handleRetrieveAllQuestions());
   }
 
   render() {
@@ -81,7 +81,6 @@ const mapStateToProps = ({
       };
     });
 
-  console.log({ unAnsweredQuestions });
 
   return {
     unAnsweredQuestions,

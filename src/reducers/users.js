@@ -6,7 +6,6 @@ export default function users(state = {}, action) {
       return { ...state, ...action.users };
 
     case SET_USER:
-        console.log(action.user);
       return { ...state, authedUser: action.user };
 
     default:

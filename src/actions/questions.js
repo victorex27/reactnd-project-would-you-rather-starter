@@ -1,6 +1,7 @@
-import { getInitialData } from '../utils/api';
+import { getInitialData, saveQuestion } from '../utils/api';
 
 export const GET_QUESTIONS = 'GET_QUESTIONS';
+export const SAVE_QUESTION = 'SAVE_QUESTION';
 
 export const getAllQuestions = (questions) => {
   return {
@@ -9,11 +10,16 @@ export const getAllQuestions = (questions) => {
   };
 };
 
-export const handleRetrieveAllQuestions = () => (dispatch, getState) => {
-    return getInitialData()
-      .then(({ questions }) => {
-        console.log({ questions });
-        dispatch(getAllQuestions(questions));
-      })
-      .catch();
+export const saveUserQuestion = (question) => {
+  return {
+    type: SAVE_QUESTION,
+    question,
   };
+};
+
+
+export const handleSaveUserQuestion = (question) => (dispatch, getState) => {
+  return saveQuestion(question)
+    .then((question) => {})
+    .catch();
+};

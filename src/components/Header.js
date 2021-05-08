@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 class Header extends Component {
   render() {
@@ -9,24 +10,24 @@ class Header extends Component {
         <nav>
           <ul>
             <li>
-              <a href="#">Home</a>
+              <Link to="/home">Home</Link>
             </li>
             <li>
-              <a href="#">Answered Questions</a>
+              <Link to="/answered-questions">Answered Questions</Link>
             </li>
             <li>
-              <a href="#">Unanwsered Questions</a>
+              <Link to="/unanswered-questions">Unanwsered Questions</Link>
             </li>
             <li>
-              <a href="#">Ask New Question</a>
+              <Link to="/new-question">Ask New Question</Link>
             </li>
             <li>
-              <a href="#">Leader Board</a>
+              <Link to="/leader-board">Leader Board</Link>
             </li>
             <li>
-              <a href="#">
+              <Link to="/login">
                 <span>{user}</span>Logout
-              </a>
+              </Link>
             </li>
           </ul>
         </nav>
