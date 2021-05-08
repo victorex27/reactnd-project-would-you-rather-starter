@@ -1,17 +1,91 @@
 import React, { Component } from 'react';
 import UnAnsweredQuestion from './UnAnsweredQuestion';
+import { connect } from 'react-redux';
+import { handleRetrieveAllQuestions } from '../actions/questions';
 
 class UnAnsweredQuestions extends Component {
+  componentDidMount() {
+    const { dispatch } = this.props;
+    dispatch(handleRetrieveAllQuestions());
+  }
+
   render() {
+    const { unAnsweredQuestions } = this.props;
     return (
       <div>
-        <UnAnsweredQuestion />
-        <UnAnsweredQuestion />
-        <UnAnsweredQuestion />
-        <UnAnsweredQuestion />
+        {unAnsweredQuestions.map(
+          ({
+            id,
+            author,
+            timestamp,
+            optionOneText,
+            optionOneVotes,
+            optionTwoText,
+            optionTwoVotes,
+            authorImageUrl,
+          }) => (
+            <UnAnsweredQuestion
+              key={id}
+              id={id}
+              author={author}
+              timestamp={timestamp}
+              optionOneText={optionOneText}
+              optionTwoText={optionTwoText}
+              authorImageUrl={authorImageUrl}
+            />
+          )
+        )}
       </div>
     );
   }
 }
 
-export default UnAnsweredQuestions;
+const mapStateToProps = ({
+  users: { authedUser: user, ...allUsers },
+  questions: quest,
+}) => {
+  const questions = Object.keys(quest);
+  const unAnsweredQuestions = questions
+    .filter((id) => {
+      const obj = quest[id];
+      if (
+        !obj.optionOne.votes.includes(user) &&
+        !obj.optionTwo.votes.includes(user)
+      ) {
+        return obj;
+      }
+    })
+    .map((i) => {
+      const {
+        id,
+        author,
+        timestamp,
+        optionOne: { text: optionOneText, votes: optionOneVotes },
+        optionTwo: { text: optionTwoText, votes: optionTwoVotes },
+      } = quest[i];
+
+      
+      const foundAuthor = Object.values(allUsers).find(
+        ({ id }) => id === author
+      );
+
+      return {
+        id,
+        author,
+        timestamp,
+        optionOneText,
+        optionOneVotes,
+        optionTwoText,
+        optionTwoVotes,
+        authorImageUrl: foundAuthor ? foundAuthor.avatarURL : '',
+      };
+    });
+
+  console.log({ unAnsweredQuestions });
+
+  return {
+    unAnsweredQuestions,
+  };
+};
+
+export default connect(mapStateToProps)(UnAnsweredQuestions);

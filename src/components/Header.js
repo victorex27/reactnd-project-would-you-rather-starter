@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class Header extends Component {
   render() {
+    const { user } = this.props;
     return (
       <div>
         <nav>
@@ -22,7 +24,9 @@ class Header extends Component {
               <a href="#">Leader Board</a>
             </li>
             <li>
-              <a href="#"><span>Amaobi</span>Logout</a>
+              <a href="#">
+                <span>{user}</span>Logout
+              </a>
             </li>
           </ul>
         </nav>
@@ -31,4 +35,8 @@ class Header extends Component {
   }
 }
 
-export default Header;
+const mapStateToProps = ({ users: { authedUser: user } }) => {
+  return { user };
+};
+
+export default connect(mapStateToProps)(Header);

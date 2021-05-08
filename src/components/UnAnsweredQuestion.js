@@ -1,19 +1,32 @@
 import React, { Component } from 'react';
-import UserImage from 'UserImage';
+import UserImage from './UserImage';
 
 class UnAnsweredQuestion extends Component {
   render() {
-    const { imgUrl, questionUser, optionOne, optionTwo } = this.props;
+    const {
+      id,
+      authorImageUrl,
+      author,
+      optionOneText,
+      optionTwoText,
+      timestamp,
+    } = this.props;
 
     return (
       <div>
-        <div> {questionUser} Asks: </div>
-        <UserImage imgUrl={imgUrl} />
+        <div> {author} Asks: </div>
+        <UserImage imgUrl={authorImageUrl} />
         <div>Would you rather</div>
         <form>
           <div>
-            <input type="radio" value={optionOne} isSelected={true} />
-            <input type="radio" value={optionTwo} isSelected={false} />
+            <span>
+              <input type="radio" name="anwser" value={optionOneText} />{' '}
+              <label htmlFor="optionOne">{optionOneText}</label>
+            </span>
+            <span>
+              <input type="radio" name="anwser" value={optionTwoText} />
+              <label htmlFor="optionOne">{optionTwoText}</label>
+            </span>
           </div>
           <div>
             <button>Vote</button>

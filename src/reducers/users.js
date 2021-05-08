@@ -1,12 +1,15 @@
-import { GET_USERS } from '../actions/users';
+import { GET_USERS, SET_USER } from '../actions/users';
 
 export default function users(state = {}, action) {
   switch (action.type) {
     case GET_USERS:
-        console.log({users: action.users});
       return { ...state, ...action.users };
 
+    case SET_USER:
+        console.log(action.user);
+      return { ...state, authedUser: action.user };
+
     default:
-      return state ;
+      return state;
   }
 }

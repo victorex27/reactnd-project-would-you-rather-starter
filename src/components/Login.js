@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { handleInitialData } from '../actions/shared';
+import { setDefaultUser } from '../actions/users';
 // import {}
 
 class Login extends Component {
@@ -22,10 +23,10 @@ class Login extends Component {
 
   onClick = (ev) => {
     ev.preventDefault();
-    const { history } = this.props;
+    const { history, dispatch } = this.props;
     const { value } = this.state;
-
-    history.push({ pathname: '/home', state: { value } });
+    dispatch(setDefaultUser(value));
+    history.push('/home');
   };
 
   componentDidMount() {

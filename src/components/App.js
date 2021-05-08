@@ -8,12 +8,13 @@ import NewQuestion from './NewQuestion';
 class App extends Component {
   render() {
     return (
-        <Router>
-          <Switch>
-            <Route exact path="/login" component={Login}></Route>
-            <Route exact path="/home" component={Home}></Route>
-          </Switch>
-        </Router>
+      <Router>
+        <Switch>
+          <Route exact path="/login" component={Login}></Route>
+          <Route exact path="/home" component={Home}></Route>
+          <Route path="/" component={Login}></Route>
+        </Switch>
+      </Router>
     );
   }
 }
