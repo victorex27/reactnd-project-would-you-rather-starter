@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import UserImage from './UserImage';
 
 class UnAnsweredQuestion extends Component {
@@ -10,29 +11,38 @@ class UnAnsweredQuestion extends Component {
       optionOneText,
       optionTwoText,
       timestamp,
+      isSelected = false,
     } = this.props;
 
-    return (
+    const ansDiv = (
       <div>
         <div> {author} Asks: </div>
         <UserImage imgUrl={authorImageUrl} />
         <div>Would you rather</div>
-        <form>
+        {isSelected && (
           <div>
-            <span>
-              <input type="radio" name="anwser" value={optionOneText} />{' '}
-              <label htmlFor="optionOne">{optionOneText}</label>
-            </span>
-            <span>
-              <input type="radio" name="anwser" value={optionTwoText} />
-              <label htmlFor="optionOne">{optionTwoText}</label>
-            </span>
+            <div>
+              <span>
+                <input type="radio" name="anwser" value={optionOneText} />
+                <label htmlFor="optionOne">{optionOneText}</label>
+              </span>
+              <span>
+                <input type="radio" name="anwser" value={optionTwoText} />
+                <label htmlFor="optionOne">{optionTwoText}</label>
+              </span>
+            </div>
+            <div>
+              <button>Vote</button>
+              <button>View Result</button>
+            </div>
           </div>
-          <div>
-            <button>Vote</button>
-            <button>View Result</button>
-          </div>
-        </form>
+        )}
+      </div>
+    );
+    
+    return (
+      <div>
+        {!isSelected ? <Link to={'/questions/' + id}>{ansDiv}</Link> : ansDiv}
       </div>
     );
   }

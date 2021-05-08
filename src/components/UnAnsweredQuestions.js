@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
 import UnAnsweredQuestion from './UnAnsweredQuestion';
 import { connect } from 'react-redux';
-import { handleRetrieveAllQuestions } from '../actions/questions';
 
 class UnAnsweredQuestions extends Component {
-  componentDidMount() {
-    // const { dispatch } = this.props;
-    // dispatch(handleRetrieveAllQuestions());
-  }
+  
 
   render() {
     const { unAnsweredQuestions } = this.props;

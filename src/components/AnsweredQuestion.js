@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import UserImage from './UserImage';
 
 class AnsweredQuestion extends Component {
@@ -12,39 +13,71 @@ class AnsweredQuestion extends Component {
       optionTwoText,
       timestamp,
       answers,
+      isSelected = false,
+      optionOneVotePercentage,
+      optionTwoVotePercentage,
+      totalNumberOfVotes,
     } = this.props;
 
-
-    return (
+    const ansDiv = (
       <div>
         <div> {author} Asks: </div>
         <UserImage imgUrl={authorImageUrl} />
         <div>You would rather be</div>
-        <form>
+        {isSelected && (
           <div>
-            {/* answered will be first and bold */}
-            <span className={answers[id] === 'optionOne' && 'bold'}>
-              {optionOneText}
-            </span>
-            <span>than</span>
-            <span className={answers[id] === 'optionTwo' && 'bold'}>
-              {optionTwoText}
-            </span>
+            <div>
+              {/* answered will be first and bold */}
+              <span className={answers[id] === 'optionOne' && 'bold'}>
+                {optionOneText}
+              </span>
+              <span> {optionOneVotePercentage} %</span>
+              <span>than</span>
+              <span className={answers[id] === 'optionTwo' && 'bold'}>
+                {optionTwoText}
+              </span>
+              <span>{optionTwoVotePercentage}%</span>
+            </div>
+            <div>
+              <span>
+                Total Number of Votes:
+                {totalNumberOfVotes}
+              </span>
+            </div>
+            <div>
+              <button>View Result</button>
+            </div>
           </div>
-          <div>
-            <button>View Result</button>
-          </div>
-        </form>
+        )}
+      </div>
+    );
+
+    return (
+      <div>
+        {!isSelected ? <Link to={'/questions/' + id}>{ansDiv}</Link> : ansDiv}
       </div>
     );
   }
 }
 
-const mapStateToProps = ({ users: { authedUser, ...allUsers } }) => {
+const mapStateToProps = (
+  { users: { authedUser, ...allUsers }, questions },
+  { id }
+) => {
   const user = Object.values(allUsers).find(({ id }) => id === authedUser);
 
+  const {
+    optionOne: { votes: votes1 },
+    optionTwo: { votes: votes2 },
+  } = questions[id];
+
+  console.log({ votes1 });
+  const totalNumberOfVotes = votes1.length + votes2.length;
   return {
     answers: user ? user.answers : [],
+    optionOneVotePercentage: Number(votes1.length / totalNumberOfVotes) * 100,
+    optionTwoVotePercentage: Number(votes2.length / totalNumberOfVotes) * 100,
+    totalNumberOfVotes,
   };
 };
 

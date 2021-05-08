@@ -6,6 +6,7 @@ import Header from './Header';
 import Login from './Login';
 import Home from './Home';
 import NewQuestion from './NewQuestion';
+import PollDetail from './PollDetail';
 import AnsweredQuestions from './AnsweredQuestions';
 import UnAnsweredQuestions from './UnAnsweredQuestions';
 // import LeaderBoard from '';
@@ -21,6 +22,11 @@ class App extends Component {
             <Route exact path="/login" component={Login}></Route>
             <Route exact path="/home" component={Home}></Route>
             <Route exact path="/new-question" component={NewQuestion}></Route>
+            <Route
+              exact
+              path="/questions/:question_id"
+              component={PollDetail}
+            ></Route>
             <Route
               exact
               path="/answered-questions"

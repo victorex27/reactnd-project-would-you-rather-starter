@@ -5,7 +5,7 @@ class UserImage extends Component {
     const { imgUrl } = this.props;
     return (
       <div>
-        <img src={imgUrl} alt="user-image" />
+        <img src={imgUrl} alt="user" />
       </div>
     );
   }

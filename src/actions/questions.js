@@ -1,4 +1,4 @@
-import { getInitialData, saveQuestion } from '../utils/api';
+import { saveQuestion } from '../utils/api';
 
 export const GET_QUESTIONS = 'GET_QUESTIONS';
 export const SAVE_QUESTION = 'SAVE_QUESTION';
@@ -16,7 +16,6 @@ export const saveUserQuestion = (question) => {
     question,
   };
 };
-
 
 export const handleSaveUserQuestion = (question) => (dispatch, getState) => {
   return saveQuestion(question)
