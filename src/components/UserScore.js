@@ -1,21 +1,27 @@
 import React, { Component } from 'react';
-import UserImage from 'UserImage';
+import UserImage from './UserImage';
 
 class UserScore extends Component {
   render() {
-    const { imgUrl, answered, created } = this.props;
+    const {
+      imgUrl,
+      name,
+      numberOfQuestions,
+      numberOfAnswers,
+      score,
+    } = this.props;
 
     return (
       <div>
-        <UserImage imgUrl={imgUrl} />
+        <UserImage imgUrl={imgUrl} /> <span> {name}</span>
         <div>
           <div>
-            <label>Answered</label>
-            {answered}
+            <label>Number of Answers</label>
+            {numberOfAnswers}
           </div>
           <div>
-            <label>Created</label>
-            {created}
+            <label>Number of Questions</label>
+            {numberOfQuestions}
           </div>
         </div>
         <div>

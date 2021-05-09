@@ -19,10 +19,10 @@ class Header extends Component {
               <Link to="/unanswered-questions">Unanwsered Questions</Link>
             </li>
             <li>
-              <Link to="/new-question">Ask New Question</Link>
+              <Link to="/add">Ask New Question</Link>
             </li>
             <li>
-              <Link to="/leader-board">Leader Board</Link>
+              <Link to="/leaderboard">Leader Board</Link>
             </li>
             <li>
               <Link to="/login">

@@ -16,6 +16,8 @@ class AnsweredQuestion extends Component {
       isSelected = false,
       optionOneVotePercentage,
       optionTwoVotePercentage,
+      totalNumberOfVoteOne,
+      totalNumberOfVoteTwo,
       totalNumberOfVotes,
     } = this.props;
 
@@ -31,11 +33,14 @@ class AnsweredQuestion extends Component {
               <span className={answers[id] === 'optionOne' && 'bold'}>
                 {optionOneText}
               </span>
+
+              <span>{totalNumberOfVoteOne}</span>
               <span> {optionOneVotePercentage} %</span>
               <span>than</span>
               <span className={answers[id] === 'optionTwo' && 'bold'}>
                 {optionTwoText}
               </span>
+              <span>{totalNumberOfVoteOne}</span>
               <span>{optionTwoVotePercentage}%</span>
             </div>
             <div>
@@ -75,6 +80,8 @@ const mapStateToProps = (
   const totalNumberOfVotes = votes1.length + votes2.length;
   return {
     answers: user ? user.answers : [],
+    totalNumberOfVoteOne: votes1.length,
+    totalNumberOfVoteTwo: votes2.length,
     optionOneVotePercentage: Number(votes1.length / totalNumberOfVotes) * 100,
     optionTwoVotePercentage: Number(votes2.length / totalNumberOfVotes) * 100,
     totalNumberOfVotes,

@@ -73,7 +73,7 @@ const mapStateToProps = ({
         optionTwoVotes,
         authorImageUrl: foundAuthor ? foundAuthor.avatarURL : '',
       };
-    });
+    }).sort( (a,b)=> b.timestamp - a.timestamp);
 
   return {
     answeredQuestions,

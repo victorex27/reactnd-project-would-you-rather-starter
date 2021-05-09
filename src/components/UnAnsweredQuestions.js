@@ -3,8 +3,6 @@ import UnAnsweredQuestion from './UnAnsweredQuestion';
 import { connect } from 'react-redux';
 
 class UnAnsweredQuestions extends Component {
-  
-
   render() {
     const { unAnsweredQuestions } = this.props;
     return (
@@ -60,7 +58,6 @@ const mapStateToProps = ({
         optionTwo: { text: optionTwoText, votes: optionTwoVotes },
       } = quest[i];
 
-      
       const foundAuthor = Object.values(allUsers).find(
         ({ id }) => id === author
       );
@@ -75,8 +72,8 @@ const mapStateToProps = ({
         optionTwoVotes,
         authorImageUrl: foundAuthor ? foundAuthor.avatarURL : '',
       };
-    });
-
+    })
+    .sort((a, b) => b.timestamp - a.timestamp);
 
   return {
     unAnsweredQuestions,

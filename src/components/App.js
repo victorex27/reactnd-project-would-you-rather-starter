@@ -9,7 +9,7 @@ import NewQuestion from './NewQuestion';
 import PollDetail from './PollDetail';
 import AnsweredQuestions from './AnsweredQuestions';
 import UnAnsweredQuestions from './UnAnsweredQuestions';
-// import LeaderBoard from '';
+import LeaderBoard from './LeaderBoard';
 
 class App extends Component {
   render() {
@@ -21,7 +21,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/login" component={Login}></Route>
             <Route exact path="/home" component={Home}></Route>
-            <Route exact path="/new-question" component={NewQuestion}></Route>
+            <Route exact path="/add" component={NewQuestion}></Route>
             <Route
               exact
               path="/questions/:question_id"
@@ -37,7 +37,7 @@ class App extends Component {
               path="/unanswered-questions"
               component={UnAnsweredQuestions}
             ></Route>
-            {/* <Route exact path="/leader-board" component={Home}></Route> */}
+            <Route exact path="/leaderboard" component={LeaderBoard}></Route>
             <Route path="/" component={Login}></Route>
           </Switch>
         </Router>
