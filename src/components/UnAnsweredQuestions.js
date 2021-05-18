@@ -18,7 +18,7 @@ class UnAnsweredQuestions extends Component {
   }
 
   render() {
-    const { unAnsweredQuestions, history } = this.props;
+    const { unAnsweredQuestions} = this.props;
 
     return (
       <div className='container-div'>

@@ -44,7 +44,6 @@ class UnAnsweredQuestion extends Component {
       author,
       optionOneText,
       optionTwoText,
-      timestamp,
       isSelected = false,
     } = this.props;
 

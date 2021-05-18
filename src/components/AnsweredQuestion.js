@@ -11,7 +11,6 @@ class AnsweredQuestion extends Component {
       author,
       optionOneText,
       optionTwoText,
-      timestamp,
       answers,
       isSelected = false,
       optionOneVotePercentage,
