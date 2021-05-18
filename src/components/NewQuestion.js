@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { setAppLocationKey } from '../actions/appLocation';
 import { handleSaveUserQuestion } from '../actions/questions';
 import { handleInitialData } from '../actions/shared';
 
@@ -12,6 +13,14 @@ class NewQuestion extends Component {
     };
   }
 
+  componentDidMount() {
+    const { key, pathname } = this.props.location;
+    const { history, dispatch } = this.props;
+    if (!key) {
+      dispatch(setAppLocationKey(pathname));
+      history.push('/login');
+    }
+  }
   onTextChange(ev) {
     ev.preventDefault();
 

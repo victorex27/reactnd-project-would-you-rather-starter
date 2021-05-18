@@ -40,7 +40,7 @@ class AnsweredQuestion extends Component {
               <span className={answers[id] === 'optionTwo' && 'bold'}>
                 {optionTwoText}
               </span>
-              <span>{totalNumberOfVoteOne}</span>
+              <span>{totalNumberOfVoteTwo}</span>
               <span>{optionTwoVotePercentage}%</span>
             </div>
             <div>

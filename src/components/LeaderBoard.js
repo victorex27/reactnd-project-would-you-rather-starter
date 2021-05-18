@@ -1,8 +1,21 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { setAppLocationKey } from '../actions/appLocation';
 import UserScore from './UserScore';
 
 class LeaderBoard extends Component {
+
+  componentDidMount() {
+
+    const { key, pathname } = this.props.location;
+    const { history, dispatch } = this.props;
+
+    if (!key) {
+      dispatch(setAppLocationKey(pathname));
+      history.push('/login');
+    }
+  }
+
   render() {
     const { users } = this.props;
     return (

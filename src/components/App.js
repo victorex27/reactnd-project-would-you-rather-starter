@@ -20,7 +20,7 @@ class App extends Component {
           {isUserLoggedIn && <Header />}
           <Switch>
             <Route exact path="/login" component={Login}></Route>
-            <Route exact path="/home" component={Home}></Route>
+            <Route exact path="/home" component={UnAnsweredQuestions}></Route>
             <Route exact path="/add" component={NewQuestion}></Route>
             <Route
               exact

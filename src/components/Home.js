@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import UnAnsweredQuestions from './UnAnsweredQuestions';
 import AnsweredQuestions from './AnsweredQuestions';
-
+import { setAppLocationKey } from '../actions/appLocation';
 
 class Home extends Component {
   constructor(props) {
@@ -30,12 +31,20 @@ class Home extends Component {
     });
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    const { key, pathname } = this.props.location;
+    const { history, dispatch } = this.props;
+
+    if (!key) {
+      dispatch(setAppLocationKey(pathname));
+      history.push('/login');
+    }
+  }
+
   render() {
     const { isShowingUnansweredQuestions } = this.state;
     return (
       <div>
-        
         <div>
           <div>
             <button onClick={this.showUnansweredQuestions}>unanswered</button>
@@ -57,6 +66,4 @@ class Home extends Component {
   }
 }
 
-
-
-export default Home;
+export default connect()(Home);

@@ -168,13 +168,13 @@ export function _saveQuestion(question) {
           questions: users[authedUser].questions.concat([formattedQuestion.id]),
         },
       };
-      console.log({ formattedQuestion });
       res(formattedQuestion);
     }, 1000);
   });
 }
 
-export function _saveQuestionAnswer({ authedUser, qid, answer }) {
+export function _saveQuestionAnswer({ authedUser, qid, answer, option }) {
+  // console.log({ questions });
   return new Promise((res, rej) => {
     setTimeout(() => {
       users = {
@@ -183,18 +183,23 @@ export function _saveQuestionAnswer({ authedUser, qid, answer }) {
           ...users[authedUser],
           answers: {
             ...users[authedUser].answers,
-            [qid]: answer,
+            [qid]: option,
           },
         },
       };
+
+      console.log('question', questions[qid][option]);
+      console.log('question', questions[qid][option].votes);
+      console.log({ option });
+      console.log('amaobi',  ...questions[qid][option]);
 
       questions = {
         ...questions,
         [qid]: {
           ...questions[qid],
-          [answer]: {
-            ...questions[qid][answer],
-            votes: questions[qid][answer].votes.concat([authedUser]),
+          [option]: {
+            ...questions[qid][option],
+            votes: questions[qid][option].votes.concat([authedUser]),
           },
         },
       };

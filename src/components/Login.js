@@ -22,18 +22,22 @@ class Login extends Component {
 
   onClick = (ev) => {
     ev.preventDefault();
-    const { history, dispatch } = this.props;
+    const { history, dispatch, appLocation } = this.props;
     const { value } = this.state;
     dispatch(setDefaultUser(value));
+    console.log({ appLocation });
+    if (appLocation) {
+      history.push(appLocation);
+      return;
+    }
     history.push('/home');
   };
 
   componentDidMount() {
     this.props.dispatch(handleInitialData());
-    console.log(this.props.location);
+    console.log('history from login: ', this.props.history);
   }
 
-  componentWill
   render() {
     const { users } = this.props;
     const { value } = this.state;
@@ -61,8 +65,8 @@ class Login extends Component {
   }
 }
 
-const mapStateToProps = ({ users }) => {
-  return { users };
+const mapStateToProps = ({ users, appLocation }) => {
+  return { users, appLocation };
 };
 
 export default connect(mapStateToProps)(Login);

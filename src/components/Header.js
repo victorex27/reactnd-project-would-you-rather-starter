@@ -3,6 +3,11 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 class Header extends Component {
+
+  componentDidMount(){
+    console.log(this.props.location);
+  }
+  
   render() {
     const { user } = this.props;
     return (

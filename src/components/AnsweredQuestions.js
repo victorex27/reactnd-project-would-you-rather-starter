@@ -1,8 +1,20 @@
 import React, { Component } from 'react';
 import AnsweredQuestion from './AnsweredQuestion';
 import { connect } from 'react-redux';
+import { setAppLocationKey } from '../actions/appLocation';
 
 class AnsweredQuestions extends Component {
+
+  componentDidMount() {
+    const { key, pathname } = this.props.location;
+    const { history, dispatch } = this.props;
+
+    if (!key) {
+      dispatch(setAppLocationKey(pathname));
+      history.push('/login');
+    }
+  }
+
   render() {
     const { answeredQuestions } = this.props;
     return (
