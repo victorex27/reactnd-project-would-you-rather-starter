@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { setAppLocationKey } from '../actions/appLocation';
 
 class AnsweredQuestions extends Component {
-
   componentDidMount() {
     const { key, pathname } = this.props.location;
     const { history, dispatch } = this.props;
@@ -18,7 +17,7 @@ class AnsweredQuestions extends Component {
   render() {
     const { answeredQuestions } = this.props;
     return (
-      <div>
+      <div className="container-div">
         {answeredQuestions.map(
           ({
             id,
@@ -47,7 +46,8 @@ class AnsweredQuestions extends Component {
 }
 
 const mapStateToProps = ({
-  users: { authedUser: user, ...allUsers },
+  users: allUsers,
+  user,
   questions: quest,
 }) => {
   const questions = Object.keys(quest);
@@ -85,7 +85,8 @@ const mapStateToProps = ({
         optionTwoVotes,
         authorImageUrl: foundAuthor ? foundAuthor.avatarURL : '',
       };
-    }).sort( (a,b)=> b.timestamp - a.timestamp);
+    })
+    .sort((a, b) => b.timestamp - a.timestamp);
 
   return {
     answeredQuestions,

@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import './Header.css';
 
 class Header extends Component {
 
-  componentDidMount(){
-    console.log(this.props.location);
-  }
+ 
   
   render() {
     const { user } = this.props;
     return (
-      <div>
+      <div className='container-div'>
         <nav>
           <ul>
             <li>
@@ -31,7 +30,7 @@ class Header extends Component {
             </li>
             <li>
               <Link to="/login">
-                <span>{user}</span>Logout
+                <span>{user} </span>Logout
               </Link>
             </li>
           </ul>
@@ -41,7 +40,7 @@ class Header extends Component {
   }
 }
 
-const mapStateToProps = ({ users: { authedUser: user } }) => {
+const mapStateToProps = ({  user }) => {
   return { user };
 };
 

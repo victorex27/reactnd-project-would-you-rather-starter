@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import users from './users';
+import user from './user';
 import questions from './questions';
 import appLocation from './appLocation';
 // import authedUser from './authedUser';
@@ -8,7 +9,8 @@ import appLocation from './appLocation';
 export default combineReducers({
   users,
   questions,
-  appLocation
+  appLocation,
+  user,
   //   authedUser,
   //   loadingBar: loadingBarReducer,
 });

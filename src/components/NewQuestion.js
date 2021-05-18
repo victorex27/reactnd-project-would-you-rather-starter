@@ -33,15 +33,15 @@ class NewQuestion extends Component {
   onSubmit(ev) {
     ev.preventDefault();
     const { optionOneText, optionTwoText } = this.state;
-    const { author, dispatch } = this.props;
+    const { author, dispatch, history } = this.props;
 
-    console.log({ optionOneText, optionTwoText, author });
     if (optionOneText && optionTwoText) {
       dispatch(
         handleSaveUserQuestion({ author, optionOneText, optionTwoText })
       );
 
-      dispatch(handleInitialData())
+      dispatch(handleInitialData());
+      history.push('/home');
       return;
     }
 
@@ -52,9 +52,9 @@ class NewQuestion extends Component {
     const { optionOneText, optionTwoText } = this.state;
 
     return (
-      <div>
-        <div>You are asking.</div>
-        <div>Would you rather</div>
+      <div className="container-div">
+        <span>You are asking.</span>
+        <span>Would you rather</span>
         <form onSubmit={this.onSubmit.bind(this)}>
           <input
             type="text"
@@ -62,7 +62,7 @@ class NewQuestion extends Component {
             name="optionOneText"
             onChange={this.onTextChange.bind(this)}
           />
-          <span> Or </span>
+          <div> Or </div>
 
           <input
             type="text"
@@ -70,15 +70,17 @@ class NewQuestion extends Component {
             name="optionTwoText"
             onChange={this.onTextChange.bind(this)}
           />
-          <span>?</span>
-          <button>Submit</button>
+          <div>
+            <span>?</span>
+            <button>Submit</button>
+          </div>
         </form>
       </div>
     );
   }
 }
 
-const mapStateToProps = ({users: { authedUser: author }}) => {
+const mapStateToProps = ({ user: author }) => {
   return { author };
 };
 

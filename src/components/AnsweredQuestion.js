@@ -22,35 +22,32 @@ class AnsweredQuestion extends Component {
     } = this.props;
 
     const ansDiv = (
-      <div>
+      <div className="tweet-div">
         <div> {author} Asks: </div>
         <UserImage imgUrl={authorImageUrl} />
-        <div>You would rather be</div>
+        <div>You would rather be </div>
         {isSelected && (
           <div>
             <div>
               {/* answered will be first and bold */}
-              <span className={answers[id] === 'optionOne' && 'bold'}>
+              <span className={answers[id] === 'optionOne' ? 'bold' :''}>
                 {optionOneText}
               </span>
 
-              <span>{totalNumberOfVoteOne}</span>
+              <span> {totalNumberOfVoteOne} votes</span>
               <span> {optionOneVotePercentage} %</span>
-              <span>than</span>
-              <span className={answers[id] === 'optionTwo' && 'bold'}>
+              <span> than </span>
+              <span className={answers[id] === 'optionTwo' ? 'bold':''}>
                 {optionTwoText}
               </span>
-              <span>{totalNumberOfVoteTwo}</span>
-              <span>{optionTwoVotePercentage}%</span>
+              <span> {totalNumberOfVoteTwo} votes</span>
+              <span> {optionTwoVotePercentage}%</span>
             </div>
             <div>
               <span>
                 Total Number of Votes:
                 {totalNumberOfVotes}
               </span>
-            </div>
-            <div>
-              <button>View Result</button>
             </div>
           </div>
         )}
@@ -66,7 +63,7 @@ class AnsweredQuestion extends Component {
 }
 
 const mapStateToProps = (
-  { users: { authedUser, ...allUsers }, questions },
+  { users:allUsers , questions, user: authedUser },
   { id }
 ) => {
   const user = Object.values(allUsers).find(({ id }) => id === authedUser);
@@ -76,7 +73,6 @@ const mapStateToProps = (
     optionTwo: { votes: votes2 },
   } = questions[id];
 
-  console.log({ votes1 });
   const totalNumberOfVotes = votes1.length + votes2.length;
   return {
     answers: user ? user.answers : [],

@@ -4,20 +4,13 @@ import { connect } from 'react-redux';
 import { setAppLocationKey } from '../actions/appLocation';
 
 class UnAnsweredQuestions extends Component {
-  constructor(props) {
-    super(props);
-  }
+  
 
-  onNavigateToQuestion(id) {
-    console.log('this is the id: ', id);
-    const { history } = this.props;
-    history.push('/questions/' + id);
-  }
+  
 
   componentDidMount() {
     const { key, pathname } = this.props.location;
     const { history, dispatch } = this.props;
-    console.log('here');
     if (!key) {
       dispatch(setAppLocationKey(pathname));
       history.push('/login');
@@ -27,18 +20,15 @@ class UnAnsweredQuestions extends Component {
   render() {
     const { unAnsweredQuestions, history } = this.props;
 
-    console.log({ history });
     return (
-      <div>
+      <div className='container-div'>
         {unAnsweredQuestions.map(
           ({
             id,
             author,
             timestamp,
             optionOneText,
-            optionOneVotes,
             optionTwoText,
-            optionTwoVotes,
             authorImageUrl,
           }) => (
             <UnAnsweredQuestion
@@ -59,7 +49,7 @@ class UnAnsweredQuestions extends Component {
 }
 
 const mapStateToProps = ({
-  users: { authedUser: user, ...allUsers },
+  users:allUsers , user,
   questions: quest,
 }) => {
   const questions = Object.keys(quest);

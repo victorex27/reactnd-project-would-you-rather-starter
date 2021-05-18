@@ -1,5 +1,4 @@
 import { saveQuestion, saveQuestionAnswer } from '../utils/api';
-import { handleInitialData } from './shared';
 
 export const GET_QUESTIONS = 'GET_QUESTIONS';
 export const SAVE_QUESTION = 'SAVE_QUESTION';
@@ -31,21 +30,13 @@ export const handleSaveUserQuestion = (question) => (dispatch, getState) => {
     .catch();
 };
 
-export const handleSaveUserQuestionAnswer = (qid, answer, option) => (
-  dispatch,
-  getState
-) => {
-  const {
-    users: { authedUser },
-    ...rest
-  } = getState();
+export const handleSaveUserQuestionAnswer =
+  (qid, answer, option) => (dispatch, getState) => {
+    const { user: authedUser } = getState();
 
-  console.log({ authedUser, qid, answer, option });
-  return saveQuestionAnswer({ authedUser, qid, answer, option })
-    .then((res) => {
-      
-      // dispatch();
-      // dispatch(handleInitialData);
-    })
-    .catch();
-};
+    return saveQuestionAnswer({ authedUser, qid, answer, option })
+      .then((res) => {
+       
+      })
+      .catch();
+  };

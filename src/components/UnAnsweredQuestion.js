@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import UserImage from './UserImage';
 
+import './UnAnsweredQuestion.css';
+
 import { handleSaveUserQuestionAnswer } from '../actions/questions';
 import { handleInitialData } from '../actions/shared';
 
@@ -24,7 +26,7 @@ class UnAnsweredQuestion extends Component {
   onSubmit(ev) {
     ev.preventDefault();
     const { answer } = this.state;
-    const { id, dispatch, optionOneText, optionTwoText, history } =
+    const { id, dispatch, optionOneText, history } =
       this.props;
     if (answer) {
       const option = answer === optionOneText ? 'optionOne' : 'optionTwo';
@@ -34,7 +36,6 @@ class UnAnsweredQuestion extends Component {
       history.push('/questions/' + id);
       return;
     }
-    console.log('state is empty');
   }
   render() {
     const {
@@ -45,12 +46,10 @@ class UnAnsweredQuestion extends Component {
       optionTwoText,
       timestamp,
       isSelected = false,
-      onNavigateToQuestion,
     } = this.props;
 
-    console.log({ onNavigateToQuestion });
     const ansDiv = (
-      <div>
+      <div className='UnAnwseredQuestion'>
         <div> {author} Asks: </div>
         <UserImage imgUrl={authorImageUrl} />
         <div>Would you rather</div>

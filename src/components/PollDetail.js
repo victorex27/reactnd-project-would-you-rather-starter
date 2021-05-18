@@ -9,7 +9,6 @@ class PollDetail extends Component {
     const { key, pathname } = this.props.location;
     const { history, dispatch } = this.props;
     if (!key) {
-      console.log('this.props.location', this.props.location);
       dispatch(setAppLocationKey(pathname));
       history.push('/login');
     }
@@ -21,16 +20,14 @@ class PollDetail extends Component {
       author,
       timestamp,
       optionOneText,
-      optionOneVotes,
       optionTwoText,
-      optionTwoVotes,
       authorImageUrl,
       isAnswered,
       history,
     } = this.props;
 
     return (
-      <div>
+      <div className='container-div'>
         {isAnswered ? (
           <AnsweredQuestion
             key={id}
@@ -62,13 +59,11 @@ class PollDetail extends Component {
 }
 
 const mapStateToProps = (
-  { users: { authedUser, ...allUsers }, questions },
+  { users: allUsers , questions, user:authedUser },
   props
 ) => {
-  console.log('props.match.params: ', !questions);
   const { question_id: questionId } = props.match.params;
   if (Object.keys(questions).length < 1) {
-    console.log('here');
     return {
       id: '',
       author: '',
@@ -79,13 +74,12 @@ const mapStateToProps = (
     };
   }
 
-  console.log('two');
   const {
     id,
     author,
     timestamp,
-    optionOne: { text: optionOneText, votes: optionOneVotes },
-    optionTwo: { text: optionTwoText, votes: optionTwoVotes },
+    optionOne: { text: optionOneText,  },
+    optionTwo: { text: optionTwoText },
   } = questions[questionId];
 
   const foundAuthor = Object.values(allUsers).find(({ id }) => id === author);

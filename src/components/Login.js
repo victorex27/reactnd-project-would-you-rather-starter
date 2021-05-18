@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import './Login.css';
+
 import { handleInitialData } from '../actions/shared';
-import { setDefaultUser } from '../actions/users';
+import { setDefaultUser, resetDefaultUser } from '../actions/user';
 // import {}
 
 class Login extends Component {
@@ -24,8 +26,10 @@ class Login extends Component {
     ev.preventDefault();
     const { history, dispatch, appLocation } = this.props;
     const { value } = this.state;
+    if (value === 'none') {
+      return;
+    }
     dispatch(setDefaultUser(value));
-    console.log({ appLocation });
     if (appLocation) {
       history.push(appLocation);
       return;
@@ -34,8 +38,10 @@ class Login extends Component {
   };
 
   componentDidMount() {
-    this.props.dispatch(handleInitialData());
-    console.log('history from login: ', this.props.history);
+    const { dispatch } = this.props;
+
+    dispatch(handleInitialData());
+    dispatch(resetDefaultUser());
   }
 
   render() {
@@ -43,7 +49,7 @@ class Login extends Component {
     const { value } = this.state;
 
     return (
-      <div>
+      <div className="container-div">
         <div>
           <select onChange={(ev) => this.onSelectChange(ev)} value={value}>
             <option value="none">None</option>
@@ -56,8 +62,6 @@ class Login extends Component {
               );
             })}
           </select>
-        </div>
-        <div>
           <button onClick={this.onClick}>Login</button>
         </div>
       </div>

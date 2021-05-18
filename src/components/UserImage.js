@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import './UserImage.css';
 
 class UserImage extends Component {
   render() {
     const { imgUrl } = this.props;
     return (
-      <div>
+      <div className='UserImage-div'>
         <img src={imgUrl} alt="user" />
       </div>
     );

@@ -1,0 +1,16 @@
+.UserImage-div {
+  display: block;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  font-size: 0;
+  outline: 0;
+  overflow: hidden;
+}
+
+.UserImage-div > img {
+  width: 150px;
+  height: auto;
+  
+}

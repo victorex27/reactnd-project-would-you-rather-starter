@@ -174,7 +174,6 @@ export function _saveQuestion(question) {
 }
 
 export function _saveQuestionAnswer({ authedUser, qid, answer, option }) {
-  // console.log({ questions });
   return new Promise((res, rej) => {
     setTimeout(() => {
       users = {
@@ -188,10 +187,6 @@ export function _saveQuestionAnswer({ authedUser, qid, answer, option }) {
         },
       };
 
-      console.log('question', questions[qid][option]);
-      console.log('question', questions[qid][option].votes);
-      console.log({ option });
-      console.log('amaobi',  ...questions[qid][option]);
 
       questions = {
         ...questions,
