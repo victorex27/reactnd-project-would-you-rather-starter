@@ -6,6 +6,18 @@ The `_DATA.js` file represents a fake database and methods that let you access t
 
 Using the provided starter code, you'll build a React/Redux front end for the application. We recommend using the [Create React App](https://github.com/facebook/create-react-app) to bootstrap the project.
 
+## HOW TO RUN
+Ensure that Node and Npm are installed on your machine
+- Clone the repo using the following commands
+
+``` git clone https://github.com/victorex27/reactnd-project-would-you-rather-starter.git ```
+
+``` git checkout master ```
+
+``` npm install ```
+
+``` npm run start ```
+
 ## Data
 
 There are two types of objects stored in our database:
