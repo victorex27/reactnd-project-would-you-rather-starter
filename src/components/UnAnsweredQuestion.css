@@ -5,4 +5,5 @@
 
 .tweet-div .bold{
     font-weight:bolder;
+    text-decoration: underline;
 }

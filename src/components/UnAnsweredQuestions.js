@@ -60,8 +60,9 @@ const mapStateToProps = ({
         !obj.optionOne.votes.includes(user) &&
         !obj.optionTwo.votes.includes(user)
       ) {
-        return obj;
+        return id;
       }
+      return null;
     })
     .map((i) => {
       const {

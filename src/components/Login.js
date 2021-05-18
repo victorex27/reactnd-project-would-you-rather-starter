@@ -4,7 +4,6 @@ import './Login.css';
 
 import { handleInitialData } from '../actions/shared';
 import { setDefaultUser, resetDefaultUser } from '../actions/user';
-// import {}
 
 class Login extends Component {
   constructor(props) {
@@ -30,6 +29,7 @@ class Login extends Component {
       return;
     }
     dispatch(setDefaultUser(value));
+
     if (appLocation) {
       history.push(appLocation);
       return;

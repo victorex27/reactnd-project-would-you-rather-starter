@@ -7,7 +7,13 @@ import { setAppLocationKey } from '../actions/appLocation';
 class PollDetail extends Component {
   componentDidMount() {
     const { key, pathname } = this.props.location;
-    const { history, dispatch } = this.props;
+    const { id, history, dispatch } = this.props;
+
+    // console.log({ id });
+    if (!id) {
+      history.push('/pagenotfound');
+    }
+
     if (!key) {
       dispatch(setAppLocationKey(pathname));
       history.push('/login');
@@ -27,7 +33,7 @@ class PollDetail extends Component {
     } = this.props;
 
     return (
-      <div className='container-div'>
+      <div className="container-div">
         {isAnswered ? (
           <AnsweredQuestion
             key={id}
@@ -59,7 +65,7 @@ class PollDetail extends Component {
 }
 
 const mapStateToProps = (
-  { users: allUsers , questions, user:authedUser },
+  { users: allUsers, questions, user: authedUser },
   props
 ) => {
   const { question_id: questionId } = props.match.params;
@@ -74,11 +80,22 @@ const mapStateToProps = (
     };
   }
 
+  if (!questions[questionId]) {
+    return {
+      id: null,
+      author: null,
+      timestamp: null,
+      optionOneText: null,
+      optionTwoText: null,
+      authorImageUrl: null,
+      isAnswered: null,
+    };
+  }
   const {
     id,
     author,
     timestamp,
-    optionOne: { text: optionOneText,  },
+    optionOne: { text: optionOneText },
     optionTwo: { text: optionTwoText },
   } = questions[questionId];
 

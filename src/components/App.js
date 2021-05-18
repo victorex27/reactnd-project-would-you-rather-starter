@@ -10,6 +10,7 @@ import PollDetail from './PollDetail';
 import AnsweredQuestions from './AnsweredQuestions';
 import UnAnsweredQuestions from './UnAnsweredQuestions';
 import LeaderBoard from './LeaderBoard';
+import PageNotFound from './PageNotFound';
 
 class App extends Component {
   render() {
@@ -39,7 +40,9 @@ class App extends Component {
                 component={UnAnsweredQuestions}
               ></Route>
               <Route exact path="/leaderboard" component={LeaderBoard}></Route>
-              <Route path="/" component={Login}></Route>
+              <Route exact path="/" component={Login}></Route>
+              <Route exact path="/pagenotfound" component={PageNotFound}></Route>
+              <Route component={PageNotFound}></Route>
             </Switch>
           </div>
         </Router>

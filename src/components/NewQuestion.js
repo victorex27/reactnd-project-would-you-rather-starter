@@ -45,7 +45,7 @@ class NewQuestion extends Component {
       return;
     }
 
-    console.log('one or more fields is missing');
+    // console.log('one or more fields is missing');
   }
 
   render() {
